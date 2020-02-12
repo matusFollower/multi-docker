@@ -10,8 +10,8 @@ script:
    - docker run -e CI=true oscarmr/react-test npm test
 
 after_success:
-   - docker build -t oscarmr/multi-client ./client
    - docker build -t oscarmr/multi-nginx ./nginx
+   - docker build -t oscarmr/multi-client ./client
    - docker build -t oscarmr/multi-server ./server
    - docker build -t oscarmr/multi-worker ./worker
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
